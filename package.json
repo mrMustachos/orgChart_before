@@ -1,0 +1,30 @@
+{
+  "name": "orgChart_before",
+  "version": "1.0.0",
+  "description": "Pre Software Engineer training Company Organizational Chart App",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MrMustachos",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-contrib-cssmin": "^2.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-cssnano": "^2.1.0",
+    "grunt-postcss": "^0.8.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrMustachos/orgChart_before.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrMustachos/orgChart_before/issues"
+  },
+  "homepage": "https://github.com/mrMustachos/orgChart_before"
+}

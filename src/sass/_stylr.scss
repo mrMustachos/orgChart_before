@@ -1,0 +1,418 @@
+@import "normalize";
+@import "mixins";
+@import "gridsterDefault";
+@import "icons";
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic);
+
+
+// ==========
+// Taking Care of CSS 
+// ==========
+
+body {
+	font-family: 'Open Sans', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+	color: $primary-font-color;
+	background-color: $primary-body-color;
+	font-size: 14px;
+	line-height: 1.2;
+	font-weight: 400;
+}
+a {
+	transition: background-color .15s ease,color .15s ease,border-color .15s ease,opacity .15s ease;
+	text-decoration: none;
+	color: $primary-font-color;
+	&:hover {
+		color: $pinky;
+	}
+}
+
+ul, ol {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+::-moz-selection {
+	background: #b3d4fc;
+}
+
+::selection {
+	background: #b3d4fc;
+}
+
+#nameBank ::-webkit-scrollbar { width: 8px; height: 8px; }
+#nameBank ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.04); border-radius: 5px; }
+#nameBank ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 5px; }
+
+
+// ==========
+// Layouts
+// ==========
+
+.wrapper {
+	position: relative;
+}
+
+.site-header {
+	@include cf;
+	background: rgba(30,33,38,.95);
+	border-top: 5px solid $pinky;
+	padding: 0 1.25em;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 200;
+	
+	$nav-height: 32px;
+
+	.logo, nav {
+		height: $nav-height;
+		line-height: $nav-height;
+		margin: 10px 0;
+	}
+	.logo {
+		float: left;
+		img {
+			height: $nav-height;
+		}
+	}
+	nav {
+		float: right;
+		li {
+			float: left;
+			.menu-link {
+				padding-top: 4px;
+			}
+			a {
+				color: #fff;
+				padding: 5px 10px;
+				&:hover {
+					color: $pinky;
+				}
+				.threeLines {
+					padding-left: 4px;
+					font-size: 16px;
+				}
+				.icon {
+					position: relative;
+					top: 4px;
+				}
+			}
+			.menu-link.active {
+				color: $pinky;
+				&:hover {
+					color: #fff;
+				}
+			}
+			&:last-child {
+				a {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}
+.chart {
+	margin-top: 77px;
+}
+
+/*/ gridster /*/
+
+.gridster * {
+  margin:0;
+  padding:0;
+}
+
+.gridster {
+	margin: 0 auto;
+	padding: 0 25px;
+	-webkit-transition: opacity .6s;
+	-moz-transition: opacity .6s;
+	-o-transition: opacity .6s;
+	-ms-transition: opacity .6s;
+	transition: opacity .6s;
+}
+
+.gridster ul {
+	margin: 0 auto;
+	z-index: 1;
+	position: relative;
+}
+
+.gridster li {
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	line-height: 100%;
+	display: list-item;
+}
+
+.gridster .gs_w {
+	background: transparent;
+	cursor: pointer;
+}
+.gridster .gs_w.box {
+	background: #fff;
+}
+.gridster .gs_w.department {
+	background: #f80046;
+	color: #fff;
+}
+.gridster .gs_w.contractor {
+	background: #999;
+	color: #fff;
+}
+
+@function _buildIcon($icon) {
+	$icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2232%22%20height%3D%2232%22%3E#{$icon}%3C%2Fsvg%3E';
+	@return $icon;
+}
+@function _buildPath($path, $parameters) {
+	$icon: '%3Cpath%20fill%3D%22#{map-get($parameters, color)}%22%20stroke%3D%22#{map-get($parameters, stroke-color)}%22%20stroke-width%3D%22#{map-get($parameters, stroke-width)}%22%20style%3D%22#{map-get($parameters, css)}%22%20d%3D%22#{$path}%22%20%2F%3E';
+	@return $icon;
+}
+@function icon($icon-name, $color, $stroke-color: transparent, $stroke-width: 0, $css: '') {
+	$parameters: ('color': $color, 'stroke-color': $stroke-color, 'stroke-width': $stroke-width, 'css': $css);
+	$icons: (
+		partTime: _buildPath('M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm0 28.9C8.9 28.9 3.1 23.1 3.1 16S8.9 3.1 16 3.1 28.9 8.9 28.9 16 23.1 28.9 16 28.9zm-2.3-22H16v11.4h-2.3V6.9zm0 9.1h9.1v2.3h-9.1V16z', $parameters)
+	);
+	$icon: _buildIcon(map-get($icons, $icon-name));
+	@return url("data:image/svg+xml;charset=utf8,#{$icon}");
+}
+.gridster .gs_w.pt {
+	background-image: icon(partTime, #999);
+	background-repeat: no-repeat;
+	background-position-x: calc(100% - 3px);
+	background-position-y: calc(100% - 3px);
+	background-size: 12px;
+}
+
+// styling options:
+// .icon-color  { background-image: icon(heart, black); }
+// .icon-stroke       { background-image: icon(heart, transparent, red, 2); }
+// .icon-stroke-color { background-image: icon(heart, red, black, 2); }
+// .icon-dashstroke   { background-image: icon(heart, red, black, 2, 'stroke-dasharray : 2px, 1px;'); }
+
+.gridster .gs_w:after {
+	content: "";
+	background: #000;
+	display: block;
+	width: 5px;
+	height: 10px;
+	position: absolute;
+	bottom: -10px;
+	left: 50%;
+	-ms-transform: translate(-50%,0);
+	-webkit-transform: translate(-50%,0);
+	transform: translate(-50%,0);
+}
+.gridster .gs_w.thru:after {
+	height: 75px;
+}
+.gridster .gs_w.connector.thru:after {
+	height: 40px;
+}
+.gridster .gs_w.divider.thru:after,
+.gridster .gs_w.reachRight:after,
+.gridster .gs_w.reachLeft:after {
+	height: 15px;
+}
+.gridster .connector.reachRight:after,
+.gridster .connector.reachLeft:after {
+	height: 30px;
+}
+.gridster .connector:not(.stepped).reachRight:after,
+.gridster .connector:not(.stepped).reachLeft:after {
+	height: 43px;
+}
+.gridster .connector:not(.stepped).thru.reachRight:after,
+.gridster .connector:not(.stepped).thru.reachLeft:after {
+	height: 75px;
+}
+.gridster .connector.doubled.box:after {
+	height: 10px;
+}
+.gridster .gs_w.divider.reachLeft {
+	background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 50.001%, rgba(0,0,0,0) 100%);
+	background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 50.001%,rgba(0,0,0,0) 100%);
+	background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 50.001%,rgba(0,0,0,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#00333333',GradientType=1 );
+}
+.gridster .gs_w.divider.reachRight {
+	background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 50.001%, rgba(0,0,0,1) 100%);
+	background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 50.001%,rgba(0,0,0,1) 100%);
+	background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 50.001%,rgba(0,0,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00333333', endColorstr='#333333',GradientType=1 );
+}
+.gridster .gs_w.divider.full {
+	background: #000;
+}
+.divider:before {
+	content: "";
+	display: block;
+	height: 5px;
+	width: 12px;
+	background: #000;
+	position: absolute;
+}
+.reachLeft.divider:before {
+	left: -11px;
+}
+.reachRight.divider:before, .full.divider:before {
+	left: 129px;
+}
+
+.doubled.reachRight.divider:before {
+	width: 82px;
+}
+.doubled.full.divider:before {
+	left: -70px;
+	width: 282px;
+}
+.doubled.reachLeft.divider:before {
+	left: -70px;
+	width: 72px;
+}
+
+.tripled.center.reachRight.divider:before {
+	width: 153px;
+}
+.tripled.center.full.divider:before {
+	left: -140px;
+	width: 422px;
+}
+.tripled.center.reachLeft.divider:before {
+	left: -140px;
+	width: 142px;
+}
+
+.tripled.right.reachRight.divider:before {
+	width: 83px;
+}
+.tripled.right.full.divider:before {
+	left: -210px;
+	width: 422px;
+}
+.tripled.right.reachLeft.divider:before {
+	left: -210px;
+	width: 212px;
+}
+
+.tripled.left.reachRight.divider:before {
+	width: 223px;
+}
+.tripled.left.full.divider:before {
+	left: -70px;
+	width: 422px;
+}
+.tripled.left.reachLeft.divider:before {
+	left: -70px;
+	width: 72px;
+}
+
+.tripled.first.reachRight.divider:before {
+	width: 13px;
+}
+.tripled.first.full.divider:before {
+	left: -70px;
+	width: 212px;
+}
+.tripled.first.reachLeft.divider:before {
+	left: -70px;
+	width: 72px;
+}
+
+.tripled.second.reachRight.divider:before {
+	width: 83px;
+}
+.tripled.second.full.divider:before {
+	left: 0px;
+	width: 212px;
+}
+.tripled.second.reachLeft.divider:before {
+	left: 0px;
+	width: 0px;
+}
+
+.gridster .connector.reachRight:before,
+.gridster .connector.reachLeft:before,
+.gridster .connector.full:before {
+	content: "";
+	height: 5px;
+	display: block;
+	background: #000;
+	position: absolute;
+	bottom: 15px;
+}
+.gridster .connector:not(.stepped).full:before,
+.gridster .connector:not(.stepped).reachRight:before,
+.gridster .connector:not(.stepped).reachLeft:before {
+	bottom: 28px;
+}
+.gridster .connector.reachRight:before {
+	width: 75px;
+	left: 65px;
+}
+.gridster .connector.reachLeft:before,
+.gridster .connector.full:before {
+	width: 65px;
+	left: 0;
+}
+.gridster .connector.full:before {
+	width: 150px;
+	left: -10px;
+}
+.gridster .connector.full.jumbo:before {
+	width: 270px;
+	left: -70px;
+	background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 25.5%,rgba(0,0,0,0) 25.5001%,rgba(0,0,0,0) 74%,rgba(0,0,0,1) 74.001%,rgba(0,0,0,1) 100%);
+	background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 25.5%,rgba(0,0,0,0) 25.5001%,rgba(0,0,0,0) 74%,rgba(0,0,0,1) 74.001%,rgba(0,0,0,1) 100%);
+	background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 25.5%,rgba(0,0,0,0) 25.5001%,rgba(0,0,0,0) 74%,rgba(0,0,0,1) 74.001%,rgba(0,0,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 );
+
+}
+
+.gridster .connector.tripled.right.reachRight:before {
+	width: 145px;
+}
+.gridster .connector.tripled.right.full:before {
+	width: 420px;
+	left: -210px;
+}
+.gridster .connector.tripled.right.reachLeft:before {
+	left: -210px;
+	width: 275px;
+}
+
+.gridster .connector.tripled.left.reachRight:before {
+	width: 285px;
+}
+.gridster .connector.tripled.left.full:before {
+	left: -70px;
+	width: 420px;
+}
+.gridster .connector.tripled.left.reachLeft:before {
+	left: -70px;
+	width: 135px;
+}
+
+.gridster .connector.reachLeft.doubled.box:before {
+	width: 70px;
+	left: -70px;
+}
+.gridster .connector.reachRight.doubled.box:before {
+	width: 70px;
+	left: 130px;
+}
+
+.gs_w.divider.thru:before,
+.gs_w.divider.blocking:before,
+.gs_w.nope:after,
+.gridster .connector.stepped.doubled.box:after,
+.gridster .connector.full:not(.jumbo):after {
+	display: none !important;
+}

@@ -1,0 +1,54 @@
+@font-face {
+font-family: 'icomoon';
+	src: url('../fonts/icons/icomoon.eot?mey5gb');
+	src: url('../fonts/icons/icomoon.eot?mey5gb#iefix') format('embedded-opentype'),
+		 url('../fonts/icons/icomoon.ttf?mey5gb') format('truetype'),
+		 url('../fonts/icons/icomoon.woff?mey5gb') format('woff'),
+		 url('../fonts/icons/icomoon.svg?mey5gb#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-part_time:before { content: "\e91e"; }
+.icon-add:before { content: "\e900"; }
+.icon-archive:before { content: "\e901"; }
+.icon-clear:before { content: "\e902"; }
+.icon-connector:before { content: "\e903"; }
+.icon-deployr:before { content: "\e904"; }
+.icon-edit:before { content: "\e905"; }
+.icon-hop:before { content: "\e906"; }
+.icon-insert_block:before { content: "\e907"; }
+.icon-insert_divider:before { content: "\e908"; }
+.icon-linkedin:before { content: "\e909"; }
+.icon-lock:before { content: "\e90a"; }
+.icon-name:before { content: "\e90b"; }
+.icon-next:before { content: "\e90c"; }
+.icon-nope:before { content: "\e90d"; }
+.icon-pause:before { content: "\e90e"; }
+.icon-phone:before { content: "\e90f"; }
+.icon-play:before { content: "\e910"; }
+.icon-previous:before { content: "\e911"; }
+.icon-remove_block:before { content: "\e912"; }
+.icon-remove_divider:before { content: "\e913"; }
+.icon-remove:before { content: "\e914"; }
+.icon-reset:before { content: "\e915"; }
+.icon-save:before { content: "\e916"; }
+.icon-tidy:before { content: "\e917"; }
+.icon-volumeMute:before { content: "\e918"; }
+.icon-volumeOff:before { content: "\e919"; }
+.icon-volumeOn:before { content: "\e91a"; }
+.icon-working:before { content: "\e91b"; }
+.icon-zoomIn:before { content: "\e91c"; }
+.icon-zoomOut:before { content: "\e91d"; }

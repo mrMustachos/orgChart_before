@@ -1,0 +1,52 @@
+.ln-letters {
+	overflow: hidden;
+	position: fixed;
+}
+.ln-letters a,
+.ln-letters .empty {
+	font-size: 0.9em;
+	display: block;
+	float: left;
+	padding: 2px 5px;
+	margin: 0 3px;
+	color: #3a3a3a;
+	text-decoration: none;
+	position: relative;
+}
+.ln-letters a:after,
+.ln-letters .empty:after {
+	content: "•";
+	position: absolute;
+	right: -6px;
+	color: #c0c0c0;
+	font-weight: 200;
+	display: none;
+}
+.ln-letters a.ln-last:after,
+.ln-letters .empty.ln-last:after {
+	content: "";
+}
+.ln-letters a:hover,
+.ln-letters a.ln-selected,
+.ln-letters .empty.ln-selected {
+	color: #f80046;
+	font-weight: 600;
+	background-color: rgba(248,0,70,.1);
+}
+.ln-letters a:hover {
+	background-color: transparent;
+}
+.ln-letters a.ln-disabled,
+.ln-letters .empty.ln-disabled {
+	color: #ABABAB;
+}
+.ln-letter-count {
+	text-align: center;
+	font-size: 0.8em;
+	line-height :1;
+	margin-bottom: 3px;
+	color: #336699;
+}
+._.ln-disabled {
+	display: none;
+}

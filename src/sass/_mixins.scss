@@ -1,0 +1,40 @@
+$employee-color: #f2f2f2;
+$manager-color: darken($employee-color, 20%);
+$primary-font-color: #3a3a3a;
+$primary-body-color: #312f32;
+$pinky: #f80046;
+
+@mixin vert-align {
+	position: absolute;
+	top: 50%;
+	-ms-transform: translate(0,-50%);
+	-webkit-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+}
+@mixin horz-align {
+	position: absolute;
+	left: 50%;
+	-ms-transform: translate(-50%,0);
+	-webkit-transform: translate(-50%,0);
+	transform: translate(-50%,0);
+}
+@mixin centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+@mixin box {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@mixin cf {
+	&:after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+}

@@ -1,0 +1,43 @@
+@import "popup";
+
+.name {
+	line-height: 1;
+	font-size: 13px;
+	font-weight: 700;
+	position: relative;
+}
+.title.longName {
+	top: 11px;
+}
+.title {
+	font-size: 10px;
+	font-weight: 600;
+	position: relative;
+	top: 3px;
+	line-height: 1.2;
+}
+.nameBox {
+	position: relative;
+	-ms-transform: translate(0,-50%);
+	-webkit-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+	top: 45%;
+	padding: 0 4px;
+}
+.name span {
+	display: inline-block;
+}
+.name span:last-of-type {
+	padding-left: 5px;
+}
+.name.longName span:last-of-type {
+	padding-left: 0;
+	display: block;
+}
+.department .nameBox {
+	top: 50%;
+}
+
+.demo {
+	margin: 87px 0 50px;
+}
